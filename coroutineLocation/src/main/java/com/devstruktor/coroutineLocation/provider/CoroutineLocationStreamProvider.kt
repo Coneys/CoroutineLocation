@@ -3,15 +3,12 @@ package com.devstruktor.coroutineLocation.provider
 import com.devstruktor.coroutineLocation.Logger
 import com.devstruktor.coroutineLocation.session.LocationRequestSession
 import com.devstruktor.coroutineLocation.session.SessionManager
-import com.devstruktor.coroutinelocationprovider.locationProviderExample.state.LocationState
+import com.devstruktor.coroutineLocation.state.LocationState
 import com.devstruktor.coroutineLocation.state.LocationStateListener
 import com.devstruktor.coroutineLocation.state.LocationStateListenerL
-import com.devstruktor.coroutine_permission.SuspendPermissions
+import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
 import com.google.android.gms.location.LocationRequest
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 fun CoroutineScope.observeLocation(
@@ -64,7 +61,9 @@ fun CoroutineScope.observeLocation(
         }
 
 
-        currentSession.signUpForLocation(locationListener)
+        withContext(Dispatchers.Main) {
+            currentSession.signUpForLocation(locationListener)
+        }
         try {
             done.await()
         } finally {

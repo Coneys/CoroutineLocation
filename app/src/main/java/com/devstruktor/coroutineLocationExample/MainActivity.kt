@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.devstruktor.coroutineLocationExample.activity.LocationActivityExample
+import com.devstruktor.coroutineLocationExample.viewModel.LocationViewModelExample
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,8 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gogo.setOnClickListener {
-            startActivity(Intent(this, MainActivity2::class.java))
+        activity_example.setOnClickListener {
+            startActivity(Intent(this, LocationActivityExample::class.java))
+        }
+
+        viewmodel_example.setOnClickListener {
+            startActivity(Intent(this, LocationViewModelExample::class.java))
         }
 
 

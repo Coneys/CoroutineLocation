@@ -4,27 +4,32 @@ import com.devstruktor.coroutineLocation.session.LocationRequestSession
 
 object Logger {
 
-    private fun pr(any: Any?) = println("CoroutineLocation   | $any")
+    var isEnabled = true
+
+    private fun pr(any: Any?) {
+        if (isEnabled)
+            println("CoroutineLocation   | $any")
+    }
 
 
-    fun closingSession(locationRequest: LocationRequestSession) {
+    internal fun closingSession(locationRequest: LocationRequestSession) {
         pr("Closing session $locationRequest")
 
     }
 
-    fun noPermissionSessionNotCreated() {
+    internal fun noPermissionSessionNotCreated() {
         pr("No permission. Session wasn't created")
     }
 
-    fun creatingNewSession(newSession: LocationRequestSession) {
+    internal fun creatingNewSession(newSession: LocationRequestSession) {
         pr("Creating new session $newSession")
     }
 
-    fun addingListenersToSession(session: LocationRequestSession) {
+    internal fun addingListenersToSession(session: LocationRequestSession) {
         pr("Adding listener to session $session")
     }
 
-    fun removingListenerFromSession(
+    internal fun removingListenerFromSession(
         session: LocationRequestSession
     ) {
         pr("Removing listener from session $session")

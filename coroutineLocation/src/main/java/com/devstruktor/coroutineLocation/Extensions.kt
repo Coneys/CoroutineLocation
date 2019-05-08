@@ -1,7 +1,7 @@
 package com.devstruktor.coroutineLocation
 
 import android.location.Location
-import com.devstruktor.coroutinelocationprovider.locationProviderExample.state.LocationState
+import com.devstruktor.coroutineLocation.state.LocationState
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.tasks.Task
 

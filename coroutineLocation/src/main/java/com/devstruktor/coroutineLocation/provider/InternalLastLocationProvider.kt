@@ -5,7 +5,7 @@ import android.content.Context
 import android.location.LocationManager
 import com.devstruktor.coroutineLocation.initalizer.LocationInitProvider
 import com.devstruktor.coroutineLocation.toLocationState
-import com.devstruktor.coroutinelocationprovider.locationProviderExample.state.LocationState
+import com.devstruktor.coroutineLocation.state.LocationState
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 

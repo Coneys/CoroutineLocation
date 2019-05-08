@@ -1,17 +1,20 @@
-package com.devstruktor.coroutineLocationExample
+package com.devstruktor.coroutineLocationExample.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.devstruktor.coroutineLocation.provider.getLastLocation
 import com.devstruktor.coroutineLocation.provider.observeLocation
+import com.devstruktor.coroutineLocationExample.R
 import com.devstruktor.coroutine_permission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class MainActivity2 : AppCompatActivity(), CoroutineScope {
-    override val coroutineContext: CoroutineContext = Dispatchers.Main + Job()
+
+class LocationActivityExample : AppCompatActivity(), CoroutineScope {
+    override val coroutineContext: CoroutineContext = Dispatchers.Default + Job()
 
 
     @SuppressLint("MissingPermission")
@@ -43,7 +46,7 @@ class MainActivity2 : AppCompatActivity(), CoroutineScope {
             .setInterval(4000)
             .setFastestInterval(800)
 
-        val permissions = CoroutinePermissions(this)
+        val permissions = CoroutinePermissions.createInstanceForActivity(this)
 
         launch {
 
@@ -58,6 +61,13 @@ class MainActivity2 : AppCompatActivity(), CoroutineScope {
             val job3 = observeLocation(request3, permissions) {
                 println("New state 3  $it")
             }
+
+            delay(1000)
+
+            println("SENDING")
+
+            val closeDialog = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
+            sendBroadcast(closeDialog)
 
 
             delay(4000)

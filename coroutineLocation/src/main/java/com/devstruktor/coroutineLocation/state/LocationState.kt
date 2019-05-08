@@ -1,4 +1,4 @@
-package com.devstruktor.coroutinelocationprovider.locationProviderExample.state
+package com.devstruktor.coroutineLocation.state
 
 import android.location.Location
 

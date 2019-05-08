@@ -3,12 +3,13 @@ package com.devstruktor.coroutineLocation.session
 import android.content.Context
 import com.devstruktor.coroutineLocation.Logger
 import com.devstruktor.coroutineLocation.toLocationState
-import com.devstruktor.coroutinelocationprovider.locationProviderExample.state.LocationState
+import com.devstruktor.coroutineLocation.state.LocationState
 import com.devstruktor.coroutineLocation.state.LocationStateListener
 
 import com.google.android.gms.location.*
+import java.util.*
 
-class LocationRequestSession(val request: LocationRequest, context: Context) {
+internal class LocationRequestSession(val request: LocationRequest, context: Context) {
     private val locationProvider: FusedLocationProviderClient =
         LocationServices.getFusedLocationProviderClient(context)
 
