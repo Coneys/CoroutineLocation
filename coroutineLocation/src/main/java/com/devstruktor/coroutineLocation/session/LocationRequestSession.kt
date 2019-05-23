@@ -3,8 +3,8 @@ package com.devstruktor.coroutineLocation.session
 import android.content.Context
 import com.devstruktor.coroutineLocation.Logger
 import com.devstruktor.coroutineLocation.toLocationState
-import com.devstruktor.coroutineLocation.state.LocationState
-import com.devstruktor.coroutineLocation.state.LocationStateListener
+import com.devstruktor.coroutineLocationCore.state.LocationState
+import com.devstruktor.coroutineLocationCore.state.LocationStateListener
 
 import com.google.android.gms.location.*
 import java.util.*

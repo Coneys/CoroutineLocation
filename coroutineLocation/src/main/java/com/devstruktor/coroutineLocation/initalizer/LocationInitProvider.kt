@@ -4,6 +4,7 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
+import com.devstruktor.coroutineLocationSettings.CoroutineLocationSettings
 import com.google.android.gms.location.FusedLocationProviderClient
 
 internal class LocationInitProvider : ContentProvider() {
@@ -25,6 +26,7 @@ internal class LocationInitProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         appContext = context.applicationContext
+        CoroutineLocationSettings.strategy = ProductionStrategy
         return true
     }
 

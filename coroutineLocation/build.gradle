@@ -71,5 +71,8 @@ dependencies {
 
     api 'com.github.Coneys.CoroutinePermissions:coroutine-permission:2.2.8'
 
+    implementation project (path:':coroutineLocationSettings')
+    api project (path:':coroutineLocationCore')
+
 
 }

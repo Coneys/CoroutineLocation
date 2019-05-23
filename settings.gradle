@@ -1,1 +1,1 @@
-include ':app', ':coroutineLocation'
+include ':app', ':coroutineLocation',':coroutineLocationCore',":coroutineLocationTest",":coroutineLocationSettings"

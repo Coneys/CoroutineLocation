@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.devstruktor.coroutineLocation.provider.getLastLocation
 import com.devstruktor.coroutineLocation.provider.observeLocation
 import com.devstruktor.coroutineLocationExample.R
-import com.devstruktor.coroutine_permission.CoroutinePermissions
+import com.github.coneys.coroutinePermission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

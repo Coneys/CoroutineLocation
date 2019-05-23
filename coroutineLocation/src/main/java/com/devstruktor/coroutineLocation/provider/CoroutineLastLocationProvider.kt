@@ -1,6 +1,6 @@
 package com.devstruktor.coroutineLocation.provider
 
-import com.devstruktor.coroutineLocation.state.LocationState
+import com.devstruktor.coroutineLocationCore.state.LocationState
 
 
 suspend fun getLastLocation(): LocationState {
