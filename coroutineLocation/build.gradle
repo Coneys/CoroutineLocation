@@ -62,8 +62,8 @@ install {
                     List dependencies = new ArrayList()
                     List runtimeDependencies = new ArrayList()
 
-                    dependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-core:master-SNAPSHOT")
-                    runtimeDependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-settings:master-SNAPSHOT")
+                    dependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-core:1.0.0-alpha04")
+                    runtimeDependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-settings:1.0.0-alpha04")
 
                     removeDependenciesTag(asString())
                     addDependenciesToPom(asString(), dependencies,runtimeDependencies)
