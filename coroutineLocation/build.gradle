@@ -56,6 +56,21 @@ install {
                     url siteUrl
 
                 }
+
+                pom.withXml {
+
+                    List dependencies = new ArrayList()
+                    List runtimeDependencies = new ArrayList()
+
+                    dependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-core:master-SNAPSHOT")
+                    runtimeDependencies.add("com.github.Coneys.CoroutineLocation:coroutine-location-settings:master-SNAPSHOT")
+
+                    removeDependenciesTag(asString())
+                    addDependenciesToPom(asString(), dependencies,runtimeDependencies)
+
+                }
+
+
             }
         }
     }
@@ -71,8 +86,60 @@ dependencies {
 
     api 'com.github.Coneys.CoroutinePermissions:coroutine-permission:2.2.8'
 
-    implementation project (path:':coroutineLocationSettings')
-    api project (path:':coroutineLocationCore')
+    implementation project(path: ':coroutineLocationSettings')
+    api project(path: ':coroutineLocationCore')
 
+
+}
+
+ext.changeGradleDepencendyToMavenDependency = { String gradle ->
+    def splitted = gradle.split(':')
+    def groupId = splitted[0]
+    def artifactId = splitted[1]
+    def version = splitted[2]
+
+    return "<groupId>" + groupId + "</groupId>\n" +
+            "<artifactId>" + artifactId + "</artifactId>\n" +
+            "<version>" + version + "</version>\n"
+}
+
+ext.changeGradleDepencendyToMavenRuntimeDependency = { String gradle ->
+    def splitted = gradle.split(':')
+    def groupId = splitted[0]
+    def artifactId = splitted[1]
+    def version = splitted[2]
+
+    return "<groupId>" + groupId + "</groupId>\n" +
+            "<artifactId>" + artifactId + "</artifactId>\n" +
+            "<version>" + version + "</version>\n"+
+            "<scope>" + "runtime"+ "</scope>\n"
+}
+
+ext.createPomDependency = { String param1 ->
+    return "<dependency>\n" +
+            changeGradleDepencendyToMavenDependency(param1) +
+            "</dependency>\n"
+}
+
+ext.createRuntimeDependency = { String param1 ->
+    return "<dependency>\n" +
+            changeGradleDepencendyToMavenRuntimeDependency(param1) +
+            "</dependency>\n"
+}
+
+ext.addDependenciesToPom = { StringBuilder pom, List<String> dependencies,List<String> runtimeDependencies ->
+
+    pom.delete(pom.lastIndexOf("</project>"), pom.length())
+    pom.append("<dependencies>\n")
+    dependencies.each { pom.append(createPomDependency(it)) }
+    runtimeDependencies.each { pom.append(createRuntimeDependency(it)) }
+    pom.append("</dependencies>\n" + "</project>")
+
+}
+
+ext.removeDependenciesTag = { StringBuilder pom ->
+
+    pom.delete(pom.indexOf("<dependencies>"), pom.length())
+    pom.append("</project>")
 
 }
