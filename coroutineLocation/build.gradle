@@ -31,7 +31,7 @@ install {
             project {
                 packaging 'aar'
                 groupId publishedGroupId
-                artifactId artifact
+                artifactId "coroutine-location"
 
                 name libraryName
                 description libraryDescription

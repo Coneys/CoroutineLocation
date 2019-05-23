@@ -25,9 +25,8 @@ allprojects {
 ext {
 
     publishedGroupId = 'com.devstruktor.coroutineLocation'
-    artifact = 'coroutineLocation'
     libraryName = 'CoroutineLocation'
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.0-alpha03'
 
     libraryDescription = 'Coroutine wrapper for Android fine location'
 
