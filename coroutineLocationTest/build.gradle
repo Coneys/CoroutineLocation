@@ -31,7 +31,7 @@ install {
             project {
                 packaging 'aar'
                 groupId publishedGroupId
-                artifactId "coroutine-location-test"
+                artifactId "coroutineLocationTest"
 
                 name libraryName
                 description libraryDescription

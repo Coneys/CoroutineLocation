@@ -30,8 +30,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                groupId publishedGroupId
-                artifactId "coroutine-location-settings"
+                groupId "com.devstruktor.coroutineLocation2"
+                artifactId "coroutineLocationSettings"
 
                 name libraryName
                 description libraryDescription
