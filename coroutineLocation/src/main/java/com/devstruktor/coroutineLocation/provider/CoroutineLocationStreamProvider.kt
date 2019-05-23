@@ -6,7 +6,7 @@ import com.devstruktor.coroutineLocation.session.SessionManager
 import com.devstruktor.coroutineLocation.state.LocationState
 import com.devstruktor.coroutineLocation.state.LocationStateListener
 import com.devstruktor.coroutineLocation.state.LocationStateListenerL
-import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
+import com.github.coneys.coroutinePermission.staticPermission.SuspendPermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
 

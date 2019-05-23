@@ -69,7 +69,7 @@ dependencies {
     api 'com.google.android.gms:play-services-maps:16.1.0'
     api 'com.google.android.gms:play-services-location:16.0.0'
 
-    api "com.github.coneys:coroutinePermissions:2.2.1"
+    api 'com.github.Coneys.CoroutinePermissions:coroutine-permission:2.2.8'
 
 
 }
