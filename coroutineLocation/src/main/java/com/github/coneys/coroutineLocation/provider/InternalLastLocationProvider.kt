@@ -29,7 +29,7 @@ internal class InternalLastLocationProvider {
                 }
 
 
-            } catch (s: SecurityException) {
+            } catch (s: Throwable) {
                 continuation.resume(LocationState.NoPermission)
             }
         }
