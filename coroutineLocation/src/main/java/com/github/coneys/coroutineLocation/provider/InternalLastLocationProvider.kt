@@ -21,8 +21,13 @@ internal class InternalLastLocationProvider {
             try {
                 if (isLocationEnabled()) {
                     provider.lastLocation.addOnCompleteListener {
-                        val state = it.toLocationState()
-                        continuation.resume(state)
+                        try {
+                            val state = it.toLocationState()
+                            continuation.resume(state)
+                        }catch (s:Throwable){
+                            continuation.resume(LocationState.NoPermission)
+                        }
+
                     }
                 } else {
                     continuation.resume(LocationState.LocationDisabled)
