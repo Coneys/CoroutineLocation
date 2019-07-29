@@ -15,14 +15,15 @@ internal class LocationRequestSession(val request: LocationRequest, context: Con
     private val listeners = ArrayList<LocationStateListener>()
     private val callback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
-            listeners.forEach { it.onNewState(result.toLocationState()) }
+            notifyListeners(result.toLocationState())
         }
 
         override fun onLocationAvailability(result: LocationAvailability) {
             if (!result.isLocationAvailable)
-                listeners.forEach { it.onNewState(LocationState.LocationDisabled) }
+                notifyListeners(LocationState.LocationDisabled)
         }
     }
+
 
     @Synchronized
     fun signUpForLocation(listener: LocationStateListener) {
@@ -31,7 +32,7 @@ internal class LocationRequestSession(val request: LocationRequest, context: Con
             try {
                 locationProvider.requestLocationUpdates(request, callback, null)
             } catch (s: SecurityException) {
-                listeners.forEach { it.onNewState(LocationState.NoPermission) }
+                notifyListeners(LocationState.NoPermission)
             }
         }
     }
@@ -45,6 +46,11 @@ internal class LocationRequestSession(val request: LocationRequest, context: Con
             SessionManager.sessions.remove(this)
         }
     }
+
+    private fun notifyListeners(locationState: LocationState) {
+        listeners.toList().forEach { it.onNewState(locationState) }
+    }
+
 
     override fun toString(): String {
         return "LocationSession $request"
