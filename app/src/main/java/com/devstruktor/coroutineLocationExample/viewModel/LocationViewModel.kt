@@ -1,13 +1,11 @@
 package com.devstruktor.coroutineLocationExample.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.github.coneys.coroutineLocation.provider.observeLocation
+import com.github.coneys.coroutineLocation.provider.getLastCachedLocation
+import com.github.coneys.coroutineLocation.provider.getLastLocation
 import com.github.coneys.coroutinePermission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 
@@ -21,9 +19,13 @@ class LocationViewModel : ViewModel(), CoroutineScope {
             .setInterval(6000)
             .setFastestInterval(1000)
 
-        observeLocation(request, CoroutinePermissions.getInstance()) {
-            println("State in view model $it")
+        launch {
+            val cachedLocation = getLastCachedLocation()
+            val lastLocation = getLastLocation(CoroutinePermissions.getInstance())
+            println("NEW LOCATION $lastLocation")
+            println("CACHED LOCATION $cachedLocation")
         }
+
     }
 
     override fun onCleared() {

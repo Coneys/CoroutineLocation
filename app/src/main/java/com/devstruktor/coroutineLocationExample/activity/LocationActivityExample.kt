@@ -85,7 +85,7 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
 
     private fun getLastLocationExample() {
         launch {
-            val location = getLastLocation()
+            val location = getLastLocation(CoroutinePermissions.getInstance())
             println("State $location")
 
         }
