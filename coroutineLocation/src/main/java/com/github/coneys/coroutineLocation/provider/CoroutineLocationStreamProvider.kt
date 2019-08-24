@@ -33,8 +33,20 @@ fun CoroutineScope.observeLocation(
     locationListener: LocationStateListener
 ): Job {
 
+    val interceptListener = object : LocationStateListener {
+        override fun onNewState(state: LocationState) {
+            locationListener.onNewState(state)
+            cachedLocation = state
+        }
+
+    }
+
     return launch {
-        CoroutineLocationSettings.strategy.startListening(coroutinePermissions, locationRequest, locationListener)
+        CoroutineLocationSettings.strategy.startListening(
+            coroutinePermissions,
+            locationRequest,
+            interceptListener
+        )
     }
 }
 

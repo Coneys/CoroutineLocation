@@ -19,7 +19,9 @@ internal object ProductionStrategy : LocationStrategy {
     }
 
     override suspend fun getLastUserLocation(): LocationState {
-     return InternalLastLocationProvider().getLastLocation()
+     return InternalLastLocationProvider().getLastLocation().also {
+
+     }
     }
 
     override suspend fun startListening(

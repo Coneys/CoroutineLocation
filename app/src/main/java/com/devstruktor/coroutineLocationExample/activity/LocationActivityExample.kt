@@ -23,8 +23,8 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
         setContentView(R.layout.activity_main2)
 
 
-        //getLastLocationExample()
-        observeLocationExample()
+        getLastLocationExample()
+        //observeLocationExample()
 
 
     }
