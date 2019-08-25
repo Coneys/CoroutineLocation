@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.coneys.coroutineLocation.provider.getLastLocation
 import com.github.coneys.coroutineLocation.provider.observeLocation
 import com.devstruktor.coroutineLocationExample.R
+import com.github.coneys.coroutineLocation.provider.waitForLocation
 import com.github.coneys.coroutinePermission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
@@ -22,12 +23,13 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-
         getLastLocationExample()
         //observeLocationExample()
 
 
     }
+
+
 
     private fun observeLocationExample() {
 

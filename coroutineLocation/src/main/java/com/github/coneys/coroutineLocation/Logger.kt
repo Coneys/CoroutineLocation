@@ -1,6 +1,7 @@
 package com.github.coneys.coroutineLocation
 
 import com.github.coneys.coroutineLocation.session.LocationRequestSession
+import com.github.coneys.coroutineLocation.state.LocationState
 
 internal object Logger {
 
@@ -11,6 +12,18 @@ internal object Logger {
             println("CoroutineLocation   | $any")
     }
 
+
+    fun waitingForLocation(waitingTimeInSeconds: Int) {
+        pr("Waiting $waitingTimeInSeconds seconds for location")
+    }
+
+    fun waitingCancelledGotSuccess() {
+        pr("Waiting cancelled, got success location")
+    }
+
+    fun waitingFinished(waitingTimeInSeconds: Int, lastState: LocationState) {
+        pr("Waiting for $waitingTimeInSeconds seconds finished. Last state $lastState")
+    }
 
     internal fun closingSession(locationRequest: LocationRequestSession) {
         pr("Closing session $locationRequest")
