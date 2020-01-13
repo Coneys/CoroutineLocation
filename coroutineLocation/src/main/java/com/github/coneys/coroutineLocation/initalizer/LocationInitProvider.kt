@@ -24,7 +24,7 @@ internal class LocationInitProvider : ContentProvider() {
     ) = null
 
     override fun onCreate(): Boolean {
-        appContext = context.applicationContext
+        appContext = context!!.applicationContext
         return true
     }
 
