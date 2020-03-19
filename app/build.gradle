@@ -41,6 +41,7 @@ dependencies {
 
     testImplementation "com.github.Coneys.CoroutinePermissions:coroutine-permission-test:2.2.8"
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0") // JVM dependency
 
 
 }

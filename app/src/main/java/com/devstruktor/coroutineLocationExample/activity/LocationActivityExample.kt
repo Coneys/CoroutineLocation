@@ -4,13 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.devstruktor.coroutineLocationExample.R
 import com.github.coneys.coroutineLocation.provider.getLastLocation
 import com.github.coneys.coroutineLocation.provider.observeLocation
-import com.devstruktor.coroutineLocationExample.R
-import com.github.coneys.coroutineLocation.provider.waitForLocation
+import com.github.coneys.coroutineLocation.state.LocationState
 import com.github.coneys.coroutinePermission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import kotlin.coroutines.CoroutineContext
 
 
@@ -28,7 +30,6 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
 
 
     }
-
 
 
     private fun observeLocationExample() {
@@ -89,6 +90,11 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
         launch {
             val location = getLastLocation(CoroutinePermissions.getInstance())
             println("State $location")
+
+            val asString = Json(JsonConfiguration.Default).stringify(LocationState.serializer(), location)
+            println("TEST: $asString")
+            val result = Json(JsonConfiguration.Default).parse(LocationState.serializer(),asString)
+            println("TEST: $result")
 
         }
     }
