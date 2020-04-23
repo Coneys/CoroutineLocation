@@ -48,7 +48,7 @@ internal object ProductionStrategy : LocationStrategy {
                 SessionManager.appContext
             )
 
-            SessionManager.sessions.add(newSession)
+            SessionManager.addSession(newSession)
             Logger.creatingNewSession(newSession)
             newSession
         } else {

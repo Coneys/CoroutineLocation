@@ -43,7 +43,7 @@ internal class LocationRequestSession(val request: LocationRequest, context: Con
         if (listeners.isEmpty()) {
             Logger.closingSession(this)
             locationProvider.removeLocationUpdates(callback)
-            SessionManager.sessions.remove(this)
+            SessionManager.removeSession(this)
         }
     }
 
