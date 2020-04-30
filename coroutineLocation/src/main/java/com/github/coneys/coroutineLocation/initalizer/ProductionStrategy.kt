@@ -40,7 +40,8 @@ internal object ProductionStrategy : LocationStrategy {
             return
         }
 
-        val foundSession = SessionManager.sessions.find { it.request == locationRequest }
+        //tactical comment
+        val foundSession = SessionManager.findSession(locationRequest)
 
         val currentSession = if (foundSession == null) {
             val newSession = LocationRequestSession(
