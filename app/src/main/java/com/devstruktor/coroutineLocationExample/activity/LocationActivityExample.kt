@@ -12,7 +12,6 @@ import com.github.coneys.coroutinePermission.CoroutinePermissions
 import com.google.android.gms.location.LocationRequest
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import kotlin.coroutines.CoroutineContext
 
 
@@ -91,9 +90,9 @@ class LocationActivityExample : AppCompatActivity(), CoroutineScope {
             val location = getLastLocation(CoroutinePermissions.getInstance())
             println("State $location")
 
-            val asString = Json(JsonConfiguration.Default).stringify(LocationState.serializer(), location)
+            val asString = Json.Default.encodeToString(LocationState.serializer(), location)
             println("TEST: $asString")
-            val result = Json(JsonConfiguration.Default).parse(LocationState.serializer(),asString)
+            val result = Json.Default.decodeFromString(LocationState.serializer(), asString)
             println("TEST: $result")
 
         }

@@ -4,10 +4,16 @@ import android.location.Location
 import android.os.Build
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.encoding.CompositeDecoder
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializer(forClass = Location::class)
 object LocationSerializer : KSerializer<Location> {
-    override val descriptor: SerialDescriptor = SerialDescriptor("LocationSerializer") {
+
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("LocationSerializer") {
         element("provider", String.serializer().descriptor)
         element("time", Long.serializer().descriptor)
         element("elapsedRealtimeNanos", Long.serializer().descriptor)
@@ -33,7 +39,7 @@ object LocationSerializer : KSerializer<Location> {
         return Location("").apply {
             loop@ while (true) {
                 when (val i = dec.decodeElementIndex(descriptor)) {
-                    CompositeDecoder.READ_DONE -> break@loop
+                    CompositeDecoder.DECODE_DONE -> break@loop
                     0 -> provider = dec.decodeStringElement(descriptor, i)
                     1 -> time = dec.decodeLongElement(descriptor, i)
                     2 -> elapsedRealtimeNanos = dec.decodeLongElement(descriptor, i)
@@ -77,5 +83,4 @@ object LocationSerializer : KSerializer<Location> {
             }
         }
     }
-
 }
