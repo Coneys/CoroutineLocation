@@ -4,6 +4,7 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
+import com.github.coneys.coroutineLocation.savedLocation.SavedLocationPreferences
 import com.google.android.gms.location.FusedLocationProviderClient
 
 internal class LocationInitProvider : ContentProvider() {
@@ -11,6 +12,7 @@ internal class LocationInitProvider : ContentProvider() {
     companion object {
         internal lateinit var appContext: Context
         internal val provider by lazy { FusedLocationProviderClient(appContext) }
+        internal val savedLocation by lazy { SavedLocationPreferences(appContext) }
     }
 
     override fun insert(uri: Uri, values: ContentValues?) = null
@@ -28,7 +30,12 @@ internal class LocationInitProvider : ContentProvider() {
         return true
     }
 
-    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?) = 0
+    override fun update(
+        uri: Uri,
+        values: ContentValues?,
+        selection: String?,
+        selectionArgs: Array<String>?
+    ) = 0
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?) = 0
 

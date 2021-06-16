@@ -1,6 +1,7 @@
 package com.github.coneys.coroutineLocation.provider
 
 import com.github.coneys.coroutineLocation.CoroutineLocationSettings
+import com.github.coneys.coroutineLocation.initalizer.LocationInitProvider
 import com.github.coneys.coroutineLocation.state.LocationState
 import com.github.coneys.coroutineLocation.state.LocationStateListener
 import com.github.coneys.coroutineLocation.state.LocationStateListenerL
@@ -37,8 +38,8 @@ fun CoroutineScope.observeLocation(
         override fun onNewState(state: LocationState) {
             locationListener.onNewState(state)
             cachedLocation = state
+            LocationInitProvider.savedLocation.saveLocation(state)
         }
-
     }
 
     return launch {
