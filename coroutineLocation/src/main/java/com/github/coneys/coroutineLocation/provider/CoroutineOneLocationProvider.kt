@@ -27,5 +27,3 @@ suspend fun getLastLocation(permissions: SuspendPermissions): LocationState {
 }
 
 fun isLocationEnabled() = CoroutineLocationSettings.strategy.isLocationEnabled()
-
-
