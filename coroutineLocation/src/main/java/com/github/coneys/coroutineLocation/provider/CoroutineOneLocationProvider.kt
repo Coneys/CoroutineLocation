@@ -15,7 +15,7 @@ fun getLastCachedLocation(): LocationState {
 }
 
 @ExperimentalTime
-fun getLastSavedLocation(noOlderThan: Duration?): LocationState {
+fun getLastSavedLocation(noOlderThan: Duration? = null): LocationState {
     return LocationInitProvider.savedLocation.loadLocationState(noOlderThan)
 }
 
