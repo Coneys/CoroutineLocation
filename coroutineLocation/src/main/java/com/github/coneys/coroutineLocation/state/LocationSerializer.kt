@@ -51,6 +51,7 @@ object LocationSerializer : KSerializer<Location> {
                     8 -> verticalAccuracyMeters = dec.decodeFloatElement(descriptor, i)
                     9 -> speedAccuracyMetersPerSecond = dec.decodeFloatElement(descriptor, i)
                     10 -> bearingAccuracyDegrees = dec.decodeFloatElement(descriptor, i)
+                    11 -> elapsedRealtimeUncertaintyNanos = dec.decodeDoubleElement(descriptor, i)
                     else -> throw SerializationException("Unknown index $i")
                 }
             }
